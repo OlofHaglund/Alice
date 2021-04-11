@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Alice Discord Bot."""
 
+import os
 import discord
 
 from commands import help_message, remindme
@@ -29,4 +30,4 @@ class AliceClient(discord.Client):
             await help_message.reply(message)
 
 client = AliceClient()
-client.run('---')
+client.run(os.environ.get("ALICE_BOT_KEY"))
