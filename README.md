@@ -13,5 +13,3 @@ This bot requires that python3.9+ is installed and used.
     ```
     /remindme 10m
     ```
-
-  * Something else
