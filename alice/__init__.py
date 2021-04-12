@@ -1,11 +1,10 @@
-#!/usr/bin/env python3
 """Alice Discord Bot."""
 
 import os
 import discord
 
-from commands import help_message, remindme
-from reminder import Reminder
+from alice.commands import help_message, remindme
+from alice.reminder import Reminder
 
 
 class AliceClient(discord.Client):
@@ -29,5 +28,9 @@ class AliceClient(discord.Client):
         if message.content.startswith('/help'):
             await help_message.reply(message)
 
-client = AliceClient()
-client.run(os.environ.get("ALICE_BOT_KEY"))
+def run():
+    client = AliceClient()
+    client.run(os.environ.get("ALICE_BOT_KEY"))
+
+if __name__ == "__main__":
+    run()

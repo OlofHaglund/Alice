@@ -2,7 +2,7 @@
 import re
 import time
 
-from reminder import Reminder
+from alice.reminder import Reminder
 
 def parse_time(message_string):
     """Parse the message for how many seconds to wait before reminding.
