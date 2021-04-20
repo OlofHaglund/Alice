@@ -1,7 +1,7 @@
 """Alice Discord Bot."""
 
-from alice.client import AliceClient
 import os
+from alice.client import AliceClient
 
 client = AliceClient()
 client.run(os.environ.get("ALICE_BOT_KEY"))
