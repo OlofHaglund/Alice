@@ -1,3 +1,4 @@
+"""Alice bot client"""
 import discord
 
 from alice.commands import help_message, remindme
