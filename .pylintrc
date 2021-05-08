@@ -1,0 +1,4 @@
+[MESSAGES CONTROL]
+# Readability and consistance first, don't do premature optimization
+# https://github.com/PyCQA/pylint/issues/1788
+disable=logging-fstring-interpolation

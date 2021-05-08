@@ -1,9 +1,9 @@
 """Alice bot client"""
+import logging
 import discord
 
 from alice.commands import help_message, remindme
 from alice.reminder import Reminder
-
 
 class AliceClient(discord.Client):
     """The Discord bot."""
@@ -15,7 +15,7 @@ class AliceClient(discord.Client):
 
     async def on_ready(self):
         """When the bot has logged into discord."""
-        print('Logged on as', self.user)
+        logging.info(f'Logged in as {self.user}')
         Reminder.client = self
         Reminder.load()
         Reminder.check_reminders.start() # pylint: disable=E1101

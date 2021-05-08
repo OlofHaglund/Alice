@@ -1,6 +1,7 @@
 """Methods connect to the /remindme command"""
-import re
+import logging
 import time
+import re
 
 from alice.reminder import Reminder
 
@@ -30,6 +31,6 @@ async def reply(message):
         await Reminder.save()
         await message.reply(f'I will remind you in {time_string}')
     except Exception as e: # pylint: disable=W0703,C0103
-        print(e)
-        #TODO: respond with a help message
+        # TODO: respond with a help message
+        logging.debug(f"couldn't parse remindme message: {message} e: {e}")
         await message.reply('I could not parse the value of /remindme')

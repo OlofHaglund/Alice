@@ -1,4 +1,5 @@
 """Container for the reminder loop."""
+import logging
 import json
 import time
 
@@ -44,12 +45,12 @@ class Reminder:
                 first_char = file.read(1)
                 file.seek(0)
                 if not first_char: # Empty file
+                    logging.info("No data file to load")
                     return
 
                 json_data = file.read()
-                print(json_data)
                 data = json.loads(json_data)
                 for i in data:
                     cls.queue.put(i)
         except IOError:
-            print("File not accessible")
+            logging.info("File not accessible")
