@@ -8,5 +8,8 @@ setup(
     packages=find_packages(include=["alice*"]),
     description="Alice discord bot",
     scripts=["alicebot.sh"],
-    install_requires=["discord.py>=1.7.1"]
+    install_requires=[
+        "discord.py>=1.7.1",
+        "pytimeparse>=1.1.8"
+    ]
 )
