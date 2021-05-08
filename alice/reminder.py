@@ -16,17 +16,14 @@ class Reminder:
     @tasks.loop(seconds=1)
     async def check_reminders(cls):
         """Loops once every second to check for reminders to send out."""
-        # TODO: Create a pritory queue class with a peek function
         if not cls.queue.empty():
-            item = cls.queue.get()
-            if item[0] < time.time():
+            if cls.queue.queue[0][0] < time.time():
+                item = cls.queue.get()
                 channel = cls.client.get_channel(item[2])
                 message = await channel.fetch_message(item[1])
                 await message.reply('Here is your reminder! Want some tea with that?')
                 cls.queue.task_done()
                 await cls.save()
-            else:
-                Reminder.queue.put(item)
 
     @classmethod
     async def save(cls):
