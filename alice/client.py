@@ -16,6 +16,8 @@ class AliceClient(discord.Client):
     async def on_ready(self):
         """When the bot has logged into discord."""
         print('Logged on as', self.user)
+        Reminder.client = self
+        Reminder.load()
         Reminder.check_reminders.start() # pylint: disable=E1101
 
     async def on_message(self, message):

@@ -22,7 +22,12 @@ async def reply(message):
     try:
         time_string = message.content.removeprefix('/remindme').strip()
         time_seconds = parse_time(time_string)
-        Reminder.queue.put((time.time() + time_seconds, message))
+        Reminder.queue.put(
+            (time.time() + time_seconds,
+            message.id,
+            message.channel.id)
+        )
+        await Reminder.save()
         await message.reply(f'I will remind you in {time_string}')
     except Exception as e: # pylint: disable=W0703,C0103
         print(e)
