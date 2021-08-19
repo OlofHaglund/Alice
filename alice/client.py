@@ -2,7 +2,7 @@
 import logging
 import discord
 
-from alice.commands import help_message, remindme
+from alice.commands import help_message, remindme, remindmeat
 from alice.reminder import Reminder
 
 class AliceClient(discord.Client):
@@ -22,8 +22,12 @@ class AliceClient(discord.Client):
 
     async def on_message(self, message):
         """A message is written in any of channels the bot is invited to."""
-        if message.content.startswith('/remindme'):
+
+        if message.content.startswith('/remindme at'):
+            await remindmeat.reply(message)
+
+        elif message.content.startswith('/remindme'):
             await remindme.reply(message)
 
-        if message.content.startswith('/help'):
+        elif message.content.startswith('/help'):
             await help_message.reply(message)

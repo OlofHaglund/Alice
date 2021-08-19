@@ -10,6 +10,7 @@ setup(
     scripts=["alicebot.sh"],
     install_requires=[
         "discord.py>=1.7.1",
-        "pytimeparse>=1.1.8"
+        "pytimeparse>=1.1.8",
+        "python-dateutil>=2.8.2"
     ]
 )
